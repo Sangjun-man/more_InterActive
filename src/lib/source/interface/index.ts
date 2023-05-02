@@ -27,7 +27,7 @@ export interface SectionElem {
 }
 
 export interface CssUpdateProp {
-  DOM: any;
+  DOM: HTMLElement;
   progressRatio: number;
   interActionProp: InterActionProp;
 }

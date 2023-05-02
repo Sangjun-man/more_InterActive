@@ -9,9 +9,10 @@ export const setDomHeight = (rootDomId: string) => {
     throw new Error(`#${rootDomId}로 만들어진 노드가 없습니다`);
   }
 
-  const { displayData } = playData;
-  const { innerHeight } = displayData;
-  const { wholeScroll } = playData.scrollData;
+  const {
+    displayData: { innerHeight },
+    scrollData: { wholeScroll },
+  } = playData;
 
   rootDOM.style.height = `${innerHeight + wholeScroll}px`;
 };

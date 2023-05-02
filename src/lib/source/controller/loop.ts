@@ -4,6 +4,8 @@ import { ACC, MAX_MOVELENGTH_VALUE } from "../const/loop";
 export const loop = () => {
   const { momentum, scrollData } = playData;
 
+  console.log("loop, momentum", momentum);
+
   const absY = momentum.abs("y");
   const signY = momentum.sign("y");
 

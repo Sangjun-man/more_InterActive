@@ -28,7 +28,7 @@ export default function valMatrix({
   }
 
   if (DOM) {
-    DOM.style.transform = `matrix(${matrixValue})`;
-    DOM.style.webkitTransform = `matrix(${matrixValue})`;
+    DOM.style.setProperty("transform", `matrix(${matrixValue})`);
+    DOM.style.setProperty("webkitTransform", `matrix(${matrixValue})`);
   }
 }

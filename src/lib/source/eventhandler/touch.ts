@@ -14,7 +14,7 @@ export const touchMoveHandler = (e: TouchEvent) => {
   e.stopPropagation();
   const { touchData } = playData;
   const { clientY } = e.targetTouches[0];
-  const deltaY = clientY - touchData.startY;
+  const deltaY = touchData.startY - clientY;
   eventControll(deltaY);
 };
 export const touchEndHandler = (e: TouchEvent) => {

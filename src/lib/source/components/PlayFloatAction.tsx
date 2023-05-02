@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { InteractionTypes } from "src/lib/source/interface/interactionTypes";
 import { initStoryBoard } from "../utils/init";
 import { PlayChildInterAction } from "./common";
+import { getPlayingDataFromScene } from "../utils/getPlayingDataFromScene";
 
 const actionListValue = (floatRatio: number) => [
   {
@@ -39,18 +40,15 @@ const actionListValue = (floatRatio: number) => [
 
 const PlayFloatAction = ({
   playId,
-  startPoint,
-  playLength,
   floatRatio,
   children,
 }: {
   playId: string;
-  startPoint: number;
-  playLength: number;
   floatRatio: number;
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { startPoint, playLength } = getPlayingDataFromScene(playId);
   const actionList = actionListValue(floatRatio);
   const value = initStoryBoard({
     playId,

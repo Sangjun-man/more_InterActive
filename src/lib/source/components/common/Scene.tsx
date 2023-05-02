@@ -1,45 +1,26 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/react";
-import { componentInit, componentSetting } from "../../settings";
-import { InteractionTypes } from "src/lib/source/interface/interactionTypes";
+import { StoryPlayingData } from "../../model/scene";
+import { sceneInit } from "../../settings/setComponent";
 
 const Scene = ({
-  playId,
-  startPoint,
-  playLength,
+  sceneId,
   children,
+  sceneInteraction,
   firstScene = false,
   lastScene = false,
 }: {
-  playId: string;
-  startPoint: number;
-  playLength: number;
+  sceneId: string;
+  children: React.ReactNode;
+  sceneInteraction: { [key: string]: StoryPlayingData };
   firstScene?: boolean;
   lastScene?: boolean;
-  children: React.ReactNode;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const actionList = [
-    {
-      type: InteractionTypes.null,
-      interActionProps: [
-        {
-          startRatio: 0,
-          endRatio: 1,
-          value: [1, 1],
-        },
-      ],
-    },
-  ];
-
-  useEffect(() => {
-    componentInit({ playId, startPoint, playLength, actionList });
-    componentSetting({ playId, ref });
-  });
+  sceneInit({ sceneId, sceneInteraction });
 
   return (
-    <div ref={ref} id={playId} css={sceneStyle(firstScene, lastScene)}>
+    <div id={sceneId} css={sceneStyle(firstScene, lastScene)}>
       {children}
     </div>
   );

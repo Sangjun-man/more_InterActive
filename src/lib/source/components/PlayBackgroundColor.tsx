@@ -4,17 +4,15 @@ import { InteractionTypes } from "src/lib/source/interface/interactionTypes";
 import { initStoryBoard } from "../utils/init";
 import { PlayChildInterAction } from "./common";
 
-const actionListValue = (color: [string, string]) => {
-  return [
-    {
-      type: InteractionTypes.backgroundColor,
-      interActionProps: [
-        //시작비율, 끝비율, (0~1) 실제값,
-        { startRatio: 0, endRatio: 1, value: [color[0], color[1]] },
-      ],
-    },
-  ];
-};
+const actionListValue = (color: [string, string]) => [
+  {
+    type: InteractionTypes.backgroundColor,
+    interActionProps: [
+      //시작비율, 끝비율, (0~1) 실제값,
+      { startRatio: 0, endRatio: 1, value: [color[0], color[1]] },
+    ],
+  },
+];
 
 const PlayBackgroundColor = ({
   playId,

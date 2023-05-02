@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Main from "../src/component/Main";
+import InteractionProvider from "src/lib/source/components/common/InteractionProvider";
 
 const Home: NextPage = () => {
   const [showChild, setShowChild] = useState(false);
@@ -11,7 +12,15 @@ const Home: NextPage = () => {
     setShowChild(true);
   }, []);
 
-  return <div>{showChild && <Main />}</div>;
+  return (
+    <div>
+      {showChild && (
+        <InteractionProvider id={"root"}>
+          <Main />
+        </InteractionProvider>
+      )}
+    </div>
+  );
 };
 
 export default Home;

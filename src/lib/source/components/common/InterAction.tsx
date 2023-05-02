@@ -1,5 +1,5 @@
 import React, { ReactChild, RefObject, useEffect } from "react";
-import { componentInit, componentSetting } from "../../settings";
+import { componentInit, componentScrollValueSetting } from "../../settings";
 import { StoryBoard } from "../../interface";
 const InterAction = ({
   refProp,
@@ -12,9 +12,10 @@ const InterAction = ({
 }) => {
   const { playId, startPoint, playLength, actionList } = initStoryBoard;
 
+  componentInit({ playId, startPoint, playLength, actionList });
+
   useEffect(() => {
-    componentInit({ playId, startPoint, playLength, actionList });
-    componentSetting({ playId, ref: refProp });
+    componentScrollValueSetting({ playId, ref: refProp });
   });
   return <div ref={refProp}>{children}</div>;
 };

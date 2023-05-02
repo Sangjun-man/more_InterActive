@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { InteractionTypes } from "src/lib/source/interface/interactionTypes";
 import { initStoryBoard } from "../utils/init";
 import { PlayInterAction } from "./common";
+import { getPlayingDataFromScene } from "../utils/getPlayingDataFromScene";
 
 const actionListValue = (up: boolean, opacityRatio: number) => [
   {
@@ -16,20 +17,18 @@ const actionListValue = (up: boolean, opacityRatio: number) => [
 
 const PlayOpacity = ({
   playId,
-  startPoint,
-  playLength,
   opacityRatio = 1,
   up = false,
   children,
 }: {
   playId: string;
-  startPoint: number;
-  playLength: number;
   opacityRatio?: number;
   up?: boolean;
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
+  const { startPoint, playLength } = getPlayingDataFromScene(playId);
   const actionList = actionListValue(up, opacityRatio);
   const value = initStoryBoard({
     playId,

@@ -13,5 +13,6 @@ export default function valOpacity({
     progressRatio,
     value,
   });
-  if (DOM) DOM.style.opacity = `${opacityCssValue && opacityCssValue}`;
+  if (DOM)
+    DOM.style.setProperty("opacity", `${opacityCssValue && opacityCssValue}`);
 }

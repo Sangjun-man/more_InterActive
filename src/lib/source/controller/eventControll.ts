@@ -21,16 +21,16 @@ export const eventControll = (deltaY: number) => {
   if (absY >= MAX_ABS_VALUE) {
     momentum.setValue(signY * MAX_ABS_VALUE, "y");
   }
-  // 아예 멈춰있는 경우에만 애니메이션 실행, 이후에는 관성값만 조절해서 애니메이션 진행
-  if (!absY) {
-    playData.rafId = requestAnimationFrame(loop);
-  }
 
   //반대방향 스크롤 시 애니메이션 중단 및 관성 해제
   if (momentum.y !== 0 && signY !== Math.sign(deltaY)) {
     momentum.setValue(0, "y");
     cancelAnimationFrame(playData.rafId);
     return;
+  }
+  // 아예 멈춰있는 경우에만 애니메이션 실행, 이후에는 관성값만 조절해서 애니메이션 진행
+  if (!absY) {
+    playData.rafId = requestAnimationFrame(loop);
   }
 
   //관성 값 추가, 300 이상 추가 제한

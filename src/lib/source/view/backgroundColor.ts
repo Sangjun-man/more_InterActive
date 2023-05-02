@@ -21,5 +21,8 @@ export default function valBackgroundColor({
     color[i] = RGBAvalue.toFixed(0);
   }
   if (DOM)
-    DOM.style.backgroundColor = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
+    DOM.style.setProperty(
+      "backgroundColor",
+      `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`
+    );
 }

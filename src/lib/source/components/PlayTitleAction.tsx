@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { InteractionTypes } from "src/lib/source/interface/interactionTypes";
 import { initStoryBoard } from "../utils/init";
 import { PlayInterAction } from "./common";
+import { getPlayingDataFromScene } from "../utils/getPlayingDataFromScene";
 
 const actionList = [
   {
@@ -31,8 +32,6 @@ const actionList = [
 
 const PlayTitleAction = ({
   playId,
-  startPoint,
-  playLength,
   children,
 }: {
   playId: string;
@@ -41,6 +40,8 @@ const PlayTitleAction = ({
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
+  const { startPoint, playLength } = getPlayingDataFromScene(playId);
 
   const value = initStoryBoard({
     playId,

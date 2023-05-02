@@ -69,4 +69,6 @@ export const setStorySection = () => {
   //스크롤값이 start == end 인 경우 필터링으로 제거
   section = section.filter((point) => point.startPoint !== point.endPoint);
   playData.scrollData.section = section;
+
+  console.log(storyBoard);
 };

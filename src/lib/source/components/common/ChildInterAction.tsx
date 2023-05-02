@@ -5,10 +5,14 @@ import React, {
   JSXElementConstructor,
   ReactElement,
 } from "react";
-import { componentInit, componentSetting } from "../../settings";
+import { componentInit, componentScrollValueSetting } from "../../settings";
 import { StoryBoard } from "../../interface";
 
-const ChildrenAction = ({
+/**
+ * 인터랙션이 일어난 컴포넌트가 랜더링 되기 전 컴포넌트의 재생 정보를 전역 스토리보드에 등록 및 재생 시작 구간, 끝나는 구간에 대해 저장
+ *
+ */
+const ChildInterAction = ({
   refProp,
   initStoryBoard,
   children,
@@ -21,7 +25,7 @@ const ChildrenAction = ({
 
   useEffect(() => {
     componentInit({ playId, startPoint, playLength, actionList });
-    componentSetting({ playId, ref: refProp });
+    componentScrollValueSetting({ playId, ref: refProp });
   });
 
   function isChild(
@@ -39,4 +43,4 @@ const ChildrenAction = ({
   return <div> {child}</div>;
 };
 
-export default ChildrenAction;
+export default ChildInterAction;

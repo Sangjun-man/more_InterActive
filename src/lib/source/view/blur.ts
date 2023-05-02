@@ -26,11 +26,14 @@ export default function valBlur({
     }
 
   if (DOM && DOM.firstElementChild) {
-    DOM.firstElementChild.style.backdropFilter! = `blur(${
-      blurCssValue && blurCssValue.toFixed(2)
-    }px)`;
-    DOM.firstElementChild.style.webkitBackdropFilter = `blur(${
-      blurCssValue && blurCssValue.toFixed(2)
-    }px)`;
+    const firstElementChild = DOM.firstElementChild as HTMLElement;
+    firstElementChild.style.setProperty(
+      "backdropFilter",
+      `blur(${blurCssValue && blurCssValue.toFixed(2)}px)`
+    );
+    firstElementChild.style.setProperty(
+      "webkitBackdropFilter",
+      `blur(${blurCssValue && blurCssValue.toFixed(2)}px)`
+    );
   }
 }
